@@ -14,6 +14,10 @@ Go2VideoDecoder::Go2VideoDecoder()
   , bus_(nullptr)
   , is_active_(false)
   , is_initialized_(false)
+  , is_synced_(false)
+  , sps_seen_(false)
+  , pps_seen_(false)
+  , sps_pps_sent_(false)
   , width_(0)
   , height_(0)
   , fps_(30.0)
@@ -49,12 +53,10 @@ bool Go2VideoDecoder::buildPipeline() {
   // Pipeline GStreamer para decodificar H.264 usando appsrc
   // appsrc -> h264parse -> avdec_h264 -> videoconvert -> appsink
 
-    std::string pipeline_str = 
-    "appsrc name=source is-live=true format=time " //format -> por lo que el pipeline se rige
-    "caps=video/x-h264, width=1280, height=720, stream-format=byte-stream,alignment=nal ! "
-    "h264parse config-interval=-1 ! "
-    "avdec_h264! "
-    "videoconvert ! "
+    std::string pipeline_str =
+    "appsrc name=source is-live=true format=time ! "
+    "h264parse config-interval=1 disable-passthrough=true ! "
+    "queue ! avdec_h264 ! queue ! videoconvert ! "
     "video/x-raw,format=BGR ! "
     "appsink name=sink emit-signals=true max-buffers=1 drop=false sync=false";
 
@@ -88,7 +90,7 @@ bool Go2VideoDecoder::buildPipeline() {
   // Configurar caps para appsrc
   GstCaps* caps = gst_caps_new_simple("video/x-h264",
     "stream-format", G_TYPE_STRING, "byte-stream",
-    "alignment", G_TYPE_STRING, "au",
+    "alignment", G_TYPE_STRING, "nal",
     nullptr);
   gst_app_src_set_caps(GST_APP_SRC(appsrc_), caps);
   gst_caps_unref(caps);
@@ -147,23 +149,6 @@ bool Go2VideoDecoder::pushH264Data(const uint8_t* data, size_t size) {
     push_count++;
   }
 
-  // Crear buffer de GStreamer
-  GstBuffer* buffer = gst_buffer_new_allocate(nullptr, size, nullptr);
-  if (!buffer) {
-    std::cerr << "Error: No se pudo crear buffer de GStreamer" << std::endl;
-    return false;
-  }
-
-  // Copiar datos al buffer
-  GstMapInfo map;
-  if (gst_buffer_map(buffer, &map, GST_MAP_WRITE)) {
-    memcpy(map.data, data, size);
-    gst_buffer_unmap(buffer, &map);
-  } else {
-    gst_buffer_unref(buffer);
-    return false;
-  }
-
   // Establecer flags y timestamps
   // Detectar tipo de NAL unit para marcar correctamente los frames
   // Los datos H.264 pueden venir con start codes (0x00 0x00 0x00 0x01 o 0x00 0x00 0x01)
@@ -179,15 +164,52 @@ bool Go2VideoDecoder::pushH264Data(const uint8_t* data, size_t size) {
     }
   }
   
-  // Detectar tipo de NAL unit
+  // Escaneo completo para detectar NALs presentes en el buffer (maneja múltiples NALs por mensaje)
+  bool contains_sps = false, contains_pps = false, contains_idr = false;
+  size_t i_scan = 0;
+  while (i_scan + 3 < size) {
+    size_t sc_len = 0;
+    if (i_scan + 4 <= size && data[i_scan] == 0x00 && data[i_scan+1] == 0x00 && data[i_scan+2] == 0x00 && data[i_scan+3] == 0x01) {
+      sc_len = 4;
+    } else if (i_scan + 3 <= size && data[i_scan] == 0x00 && data[i_scan+1] == 0x00 && data[i_scan+2] == 0x01) {
+      sc_len = 3;
+    }
+    if (sc_len == 0) { i_scan++; continue; }
+    size_t nal_hdr = i_scan + sc_len;
+    if (nal_hdr >= size) break;
+    uint8_t nal_type_scan = data[nal_hdr] & 0x1F;
+    if (nal_type_scan == 7) contains_sps = true;
+    if (nal_type_scan == 8) contains_pps = true;
+    if (nal_type_scan == 5) contains_idr = true;
+    // Extraer y cachear SPS/PPS (incluyendo start code) hasta el siguiente start code o fin
+    if (nal_type_scan == 7 || nal_type_scan == 8) {
+      size_t next = nal_hdr + 1;
+      // Buscar próximo start code
+      while (next + 3 < size) {
+        if ((next + 4 <= size && data[next] == 0x00 && data[next+1] == 0x00 && data[next+2] == 0x00 && data[next+3] == 0x01) ||
+            (next + 3 <= size && data[next] == 0x00 && data[next+1] == 0x00 && data[next+2] == 0x01)) {
+          break;
+        }
+        next++;
+      }
+      const uint8_t* start_ptr = &data[i_scan];
+      size_t nal_len = (next > i_scan) ? (next - i_scan) : (size - i_scan);
+      if (nal_type_scan == 7) {
+        cached_sps_.assign(start_ptr, start_ptr + nal_len);
+      } else {
+        cached_pps_.assign(start_ptr, start_ptr + nal_len);
+      }
+    }
+    i_scan = nal_hdr + 1;
+  }
+
+  if (contains_sps) sps_seen_.store(true);
+  if (contains_pps) pps_seen_.store(true);
+  if (contains_idr) { is_keyframe = true; is_synced_.store(true); }
+
+  // Log básico del primer NAL detectado en el paquete
   if (size > offset) {
     uint8_t nal_type = (data[offset] & 0x1F);
-    // Tipo 5 = IDR frame (frame clave), 7 = SPS, 8 = PPS
-    if (nal_type == 5 || nal_type == 7 || nal_type == 8) {
-      is_keyframe = true;
-    }
-    
-    // Log del tipo de NAL unit (solo algunos para no saturar)
     static int nal_log_count = 0;
     if (nal_log_count < 20) {
       const char* nal_names[] = {
@@ -195,12 +217,74 @@ bool Go2VideoDecoder::pushH264Data(const uint8_t* data, size_t size) {
         "IDR", "SEI", "SPS", "PPS", "AUD", "End of sequence", "End of stream"
       };
       const char* nal_name = (nal_type < 12) ? nal_names[nal_type] : "Unknown";
-      std::cout << "[NAL] Tipo: " << static_cast<int>(nal_type) 
-                << " (" << nal_name << "), Keyframe: " 
-                << (is_keyframe ? "Sí" : "No") 
+      std::cout << "[NAL] Tipo: " << static_cast<int>(nal_type)
+                << " (" << nal_name << ")"
                 << ", Tamaño: " << size << " bytes" << std::endl;
       nal_log_count++;
     }
+  }
+
+  // Gateo: hasta que llegue el primer IDR, solo permitimos buffers con SPS/PPS/IDR
+  if (!is_synced_.load()) {
+    static int unsynced_count = 0;
+    if (contains_sps && !sps_seen_.load()) {
+      std::cout << "[SYNC] SPS detectado por primera vez" << std::endl;
+    }
+    if (contains_pps && !pps_seen_.load()) {
+      std::cout << "[SYNC] PPS detectado por primera vez" << std::endl;
+    }
+    if (contains_idr) {
+      std::cout << "[SYNC] IDR detectado. Sincronización habilitada." << std::endl;
+    }
+    if (!(contains_sps || contains_pps || contains_idr)) {
+      unsynced_count++;
+      if (unsynced_count <= 20 || unsynced_count % 200 == 0) {
+        std::cout << "[SYNC] Descartando buffer sin SPS/PPS/IDR (size=" << size 
+                  << ") mientras esperamos IDR... (count=" << unsynced_count << ")" << std::endl;
+      }
+      return true; // descartar silenciosamente antes de alocar buffer
+    }
+  }
+
+  // Si llegó un IDR y aún no enviamos SPS/PPS, prepéndelos explícitamente antes del IDR
+  if (contains_idr && !sps_pps_sent_.load()) {
+    auto push_vec = [&](const std::vector<uint8_t>& vec, const char* tag) {
+      if (vec.empty()) return;
+      GstBuffer* b = gst_buffer_new_allocate(nullptr, vec.size(), nullptr);
+      if (!b) return;
+      GstMapInfo m;
+      if (gst_buffer_map(b, &m, GST_MAP_WRITE)) {
+        memcpy(m.data, vec.data(), vec.size());
+        gst_buffer_unmap(b, &m);
+      }
+      GST_BUFFER_PTS(b) = GST_CLOCK_TIME_NONE;
+      GST_BUFFER_DTS(b) = GST_CLOCK_TIME_NONE;
+      GST_BUFFER_DURATION(b) = GST_CLOCK_TIME_NONE;
+      gst_app_src_push_buffer(GST_APP_SRC(appsrc_), b);
+      std::cout << "[SYNC] " << tag << " enviado antes de IDR (" << vec.size() << " bytes)" << std::endl;
+    };
+    if (!cached_sps_.empty() || !cached_pps_.empty()) {
+      push_vec(cached_sps_, "SPS");
+      push_vec(cached_pps_, "PPS");
+      sps_pps_sent_.store(true);
+    }
+  }
+
+  // Crear buffer de GStreamer (tras validar gateo)
+  GstBuffer* buffer = gst_buffer_new_allocate(nullptr, size, nullptr);
+  if (!buffer) {
+    std::cerr << "Error: No se pudo crear buffer de GStreamer" << std::endl;
+    return false;
+  }
+
+  // Copiar datos al buffer
+  GstMapInfo map;
+  if (gst_buffer_map(buffer, &map, GST_MAP_WRITE)) {
+    memcpy(map.data, data, size);
+    gst_buffer_unmap(buffer, &map);
+  } else {
+    gst_buffer_unref(buffer);
+    return false;
   }
   
   // Marcar flags según el tipo de frame
@@ -232,6 +316,13 @@ bool Go2VideoDecoder::pushH264Data(const uint8_t* data, size_t size) {
                             ? ret_names[ret] : "UNKNOWN";
     std::cerr << "[ERROR pushH264Data] GstFlowReturn: " << ret 
               << " (" << ret_name << "), Buffers fallidos: " << error_count << std::endl;
+    if (ret == GST_FLOW_NOT_LINKED) {
+      std::cerr << "[HINT] NOT_LINKED: suele indicar falta de SPS/PPS/IDR o negociación pendiente."
+                << std::endl;
+      std::cerr << "       Estado: is_synced=" << (is_synced_.load() ? 1 : 0)
+                << ", sps_seen=" << (sps_seen_.load() ? 1 : 0)
+                << ", pps_seen=" << (pps_seen_.load() ? 1 : 0) << std::endl;
+    }
     return false;
   }
   
@@ -323,6 +414,18 @@ gboolean Go2VideoDecoder::busCall(GstBus* bus, GstMessage* msg, gpointer data) {
       g_free(debug);
       g_error_free(error);
       decoder->is_active_.store(false);
+      std::cerr << "[CTX] Flags: is_synced=" << (decoder->is_synced_.load()?1:0)
+                << ", sps_seen=" << (decoder->sps_seen_.load()?1:0)
+                << ", pps_seen=" << (decoder->pps_seen_.load()?1:0) << std::endl;
+      if (decoder->pipeline_) {
+        GstState s = GST_STATE_NULL, p = GST_STATE_NULL;
+        gst_element_get_state(decoder->pipeline_, &s, &p, 0);
+        const char* state_names[] = {"VOID_PENDING", "NULL", "READY", "PAUSED", "PLAYING"};
+        std::cerr << "[CTX] Pipeline state: " << state_names[s] << ", pending: " << state_names[p] << std::endl;
+      }
+      if (decoder->pipeline_) {
+        gst_element_set_state(decoder->pipeline_, GST_STATE_NULL);
+      }
       break;
     }
     
@@ -405,21 +508,15 @@ void Go2VideoDecoder::start() {
 }
 
 void Go2VideoDecoder::stop() {
-  if (!is_active_.load()) {
-    return;
-  }
-
+  // Forzar estado NULL siempre para evitar CRITICAL al liberar
   is_active_.store(false);
-  
   if (pipeline_) {
     gst_element_set_state(pipeline_, GST_STATE_NULL);
   }
-  
   if (processing_thread_ && processing_thread_->joinable()) {
     processing_thread_->join();
     processing_thread_.reset();
   }
-
   std::cout << "Procesamiento de video detenido" << std::endl;
 }
 

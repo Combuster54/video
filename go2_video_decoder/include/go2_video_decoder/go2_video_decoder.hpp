@@ -11,6 +11,7 @@
 #include <atomic>
 #include <mutex>
 #include <functional>
+#include <vector>
 
 namespace go2_video_decoder {
 
@@ -83,9 +84,15 @@ private:
   
   std::atomic<bool> is_active_;
   std::atomic<bool> is_initialized_;
+  std::atomic<bool> is_synced_;
+  std::atomic<bool> sps_seen_;
+  std::atomic<bool> pps_seen_;
+  std::atomic<bool> sps_pps_sent_;
   std::unique_ptr<std::thread> processing_thread_;
   std::mutex frame_mutex_;
   std::mutex push_mutex_;
+  std::vector<uint8_t> cached_sps_;
+  std::vector<uint8_t> cached_pps_;
   
   cv::Mat latest_frame_;
   FrameCallback frame_callback_;

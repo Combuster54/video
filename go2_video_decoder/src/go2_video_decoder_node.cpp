@@ -6,6 +6,7 @@
 #include <chrono>
 #include <memory>
 #include <mutex>
+#include <sstream>
 
 using std::placeholders::_1;
 using unitree_go::msg::Go2FrontVideoData;
@@ -69,6 +70,54 @@ public:
   }
 
 private:
+  // Analiza un buffer H.264 y genera un resumen de NALs encontrados
+  static std::string summarizeH264NALs(const uint8_t* data, size_t size) {
+    if (!data || size < 4) return "(vacío)";
+    size_t i = 0;
+    int total_nals = 0;
+    int cnt_nonidr = 0, cnt_idr = 0, cnt_sps = 0, cnt_pps = 0, cnt_sei = 0, cnt_aud = 0;
+    int first_nal = -1;
+    std::ostringstream seq;
+    int seq_printed = 0;
+    auto nalName = [](int t) {
+      switch (t) {
+        case 1: return "Non-IDR"; case 5: return "IDR"; case 6: return "SEI";
+        case 7: return "SPS"; case 8: return "PPS"; case 9: return "AUD";
+        default: return "Other";
+      }
+    };
+    while (i + 3 < size) {
+      size_t sc_len = 0;
+      if (i + 4 <= size && data[i]==0x00 && data[i+1]==0x00 && data[i+2]==0x00 && data[i+3]==0x01) sc_len = 4;
+      else if (i + 3 <= size && data[i]==0x00 && data[i+1]==0x00 && data[i+2]==0x01) sc_len = 3;
+      if (sc_len == 0) { i++; continue; }
+      size_t nal_hdr = i + sc_len;
+      if (nal_hdr >= size) break;
+      int nal_type = data[nal_hdr] & 0x1F;
+      if (first_nal < 0) first_nal = nal_type;
+      total_nals++;
+      if (nal_type == 1) cnt_nonidr++;
+      else if (nal_type == 5) cnt_idr++;
+      else if (nal_type == 7) cnt_sps++;
+      else if (nal_type == 8) cnt_pps++;
+      else if (nal_type == 6) cnt_sei++;
+      else if (nal_type == 9) cnt_aud++;
+      if (seq_printed < 10) {
+        if (seq_printed > 0) seq << ",";
+        seq << nal_type;
+        seq_printed++;
+      }
+      i = nal_hdr + 1;
+    }
+    std::ostringstream out;
+    out << "NALs total=" << total_nals
+        << " | primeros=[" << seq.str() << "]"
+        << " | first=" << (first_nal >= 0 ? std::to_string(first_nal) : std::string("-"))
+        << " | SPS=" << cnt_sps << ", PPS=" << cnt_pps << ", IDR=" << cnt_idr
+        << ", NonIDR=" << cnt_nonidr << ", SEI=" << cnt_sei << ", AUD=" << cnt_aud;
+    return out.str();
+  }
+
   void videoDataCallback(const Go2FrontVideoData::SharedPtr msg) {
     // Extraer datos H.264 del mensaje
     // Verificar si alguno de los streams de video tiene datos
@@ -91,28 +140,24 @@ private:
       return;
     }
 
-    // Log detallado (solo algunos mensajes)
+    // Log detallado del flujo H.264 en cada mensaje
     static int msg_count = 0;
     static int log_count = 0;
     msg_count++;
     
-    if (log_count < 10 || msg_count % 1000 == 0) {
-      RCLCPP_INFO(this->get_logger(),
-        "[ROS2] Mensaje #%d recibido: %s, %zu bytes, time_frame: %lu",
-        msg_count, video_type.c_str(), video_size, msg->time_frame);
-      log_count++;
-    }
+    // Siempre imprimimos un resumen compacto por mensaje para diagnóstico
+    std::string nal_summary = summarizeH264NALs(video_data, video_size);
+    RCLCPP_INFO(this->get_logger(),
+      "[ROS2] Msg #%d: %s, %zu bytes, time_frame=%lu | %s",
+      msg_count, video_type.c_str(), video_size, msg->time_frame, nal_summary.c_str());
 
     // Enviar datos H.264 al pipeline de GStreamer
     if (!decoder_.pushH264Data(video_data, video_size)) {
       RCLCPP_ERROR_THROTTLE(this->get_logger(), *this->get_clock(), 1000,
         "Error al enviar datos H.264 (%s) al decodificador", video_type.c_str());
     } else {
-      // Log solo ocasional para no saturar
-      if (log_count < 10 || msg_count % 1000 == 0) {
-        RCLCPP_DEBUG(this->get_logger(),
-          "Datos H.264 (%s) enviados correctamente al pipeline", video_type.c_str());
-      }
+      RCLCPP_DEBUG(this->get_logger(),
+        "Datos H.264 (%s) enviados correctamente al pipeline", video_type.c_str());
     }
   }
 
