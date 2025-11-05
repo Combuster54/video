@@ -53,10 +53,16 @@ bool Go2VideoDecoder::buildPipeline() {
   // Pipeline GStreamer para decodificar H.264 usando appsrc
   // appsrc -> h264parse -> avdec_h264 -> videoconvert -> appsink
 
+    //18 veces
     std::string pipeline_str =
     "appsrc name=source is-live=true format=time ! "
-    "h264parse config-interval=1 disable-passthrough=true ! "
-    "queue ! avdec_h264 ! queue ! videoconvert ! "
+    //"queue ! "
+    "h264parse config-interval=-1 disable-passthrough=true ! "
+    "queue ! "
+    "avdec_h264 !"
+//    "queue ! "
+    "queue max-size-buffers=4 max-size-bytes=0 max-size-time=0 leaky=downstream silent=false !"       // aislar pos-proceso
+    "videoconvert ! "
     "video/x-raw,format=BGR ! "
     "appsink name=sink emit-signals=true max-buffers=1 drop=false sync=false";
 
@@ -534,6 +540,41 @@ bool Go2VideoDecoder::getVideoInfo(int& width, int& height, double& fps) const {
   fps = fps_;
   
   return (width > 0 && height > 0);
+}
+
+void Go2VideoDecoder::setInitialSpsPps(const std::vector<uint8_t>& sps, const std::vector<uint8_t>& pps) {
+  std::lock_guard<std::mutex> lock(push_mutex_);
+  cached_sps_ = sps;
+  cached_pps_ = pps;
+  if (!cached_sps_.empty()) sps_seen_.store(true);
+  if (!cached_pps_.empty()) pps_seen_.store(true);
+  sps_pps_sent_.store(false);
+}
+
+void Go2VideoDecoder::primeParserWithSpsPps() {
+  std::lock_guard<std::mutex> lock(push_mutex_);
+  auto push_vec = [&](const std::vector<uint8_t>& vec) {
+    if (vec.empty() || !appsrc_) return;
+    GstBuffer* b = gst_buffer_new_allocate(nullptr, vec.size(), nullptr);
+    if (!b) return;
+    GstMapInfo m;
+    if (gst_buffer_map(b, &m, GST_MAP_WRITE)) {
+      memcpy(m.data, vec.data(), vec.size());
+      gst_buffer_unmap(b, &m);
+    }
+    GST_BUFFER_PTS(b) = GST_CLOCK_TIME_NONE;
+    GST_BUFFER_DTS(b) = GST_CLOCK_TIME_NONE;
+    GST_BUFFER_DURATION(b) = GST_CLOCK_TIME_NONE;
+    gst_app_src_push_buffer(GST_APP_SRC(appsrc_), b);
+  };
+  if (!cached_sps_.empty()) {
+    push_vec(cached_sps_);
+    std::cout << "[PRIME] SPS inicial inyectado (" << cached_sps_.size() << " bytes)" << std::endl;
+  }
+  if (!cached_pps_.empty()) {
+    push_vec(cached_pps_);
+    std::cout << "[PRIME] PPS inicial inyectado (" << cached_pps_.size() << " bytes)" << std::endl;
+  }
 }
 
 void Go2VideoDecoder::processVideo() {

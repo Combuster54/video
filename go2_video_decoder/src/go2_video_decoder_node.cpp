@@ -20,6 +20,9 @@ public:
     this->declare_parameter<std::string>("frame_id", "camera_frame");
     this->declare_parameter<int>("width", 1920);
     this->declare_parameter<int>("height", 1080);
+    this->declare_parameter<std::string>("initial_sps_hex", "");
+    this->declare_parameter<std::string>("initial_pps_hex", "");
+    this->declare_parameter<bool>("prime_parser_on_start", false);
     
     // Obtener parámetros
     std::string video_sub_topic = this->get_parameter("video_sub_topic").as_string();
@@ -27,6 +30,9 @@ public:
     std::string frame_id = this->get_parameter("frame_id").as_string();
     int width = this->get_parameter("width").as_int();
     int height = this->get_parameter("height").as_int();
+    std::string initial_sps_hex = this->get_parameter("initial_sps_hex").as_string();
+    std::string initial_pps_hex = this->get_parameter("initial_pps_hex").as_string();
+    bool prime_parser_on_start = this->get_parameter("prime_parser_on_start").as_bool();
     
     frame_id_ = frame_id;
     
@@ -49,6 +55,42 @@ public:
       RCLCPP_ERROR(this->get_logger(), "Error al inicializar el decodificador");
       return;
     }
+
+    // Parsear hex a bytes (añadir start code si falta) y configurar SPS/PPS iniciales
+    auto hexToBytes = [](const std::string& hex) -> std::vector<uint8_t> {
+      std::vector<uint8_t> out;
+      std::string s;
+      s.reserve(hex.size());
+      for (char c : hex) {
+        if (c != ' ' && c != ':' && c != '\n' && c != '\r' && c != '\t') s.push_back(c);
+      }
+      if (s.size() % 2 != 0) return out;
+      out.reserve(s.size()/2 + 4);
+      for (size_t i = 0; i < s.size(); i += 2) {
+        uint8_t b = static_cast<uint8_t>(strtoul(s.substr(i,2).c_str(), nullptr, 16));
+        out.push_back(b);
+      }
+      return out;
+    };
+    auto ensureStartCode = [](std::vector<uint8_t>& v) {
+      if (v.size() >= 4 && v[0]==0x00 && v[1]==0x00 && v[2]==0x00 && v[3]==0x01) return;
+      if (v.size() >= 3 && v[0]==0x00 && v[1]==0x00 && v[2]==0x01) return;
+      if (!v.empty()) {
+        std::vector<uint8_t> pref = {0x00,0x00,0x00,0x01};
+        pref.insert(pref.end(), v.begin(), v.end());
+        v.swap(pref);
+      }
+    };
+    if (!initial_sps_hex.empty() || !initial_pps_hex.empty()) {
+      std::vector<uint8_t> sps = hexToBytes(initial_sps_hex);
+      std::vector<uint8_t> pps = hexToBytes(initial_pps_hex);
+      ensureStartCode(sps);
+      ensureStartCode(pps);
+      if (!sps.empty() || !pps.empty()) {
+        decoder_.setInitialSpsPps(sps, pps);
+        RCLCPP_INFO(this->get_logger(), "SPS/PPS inicial configurado: sps=%zuB, pps=%zuB", sps.size(), pps.size());
+      }
+    }
     
     // Configurar callback para frames decodificados
     decoder_.setFrameCallback(std::bind(
@@ -56,6 +98,9 @@ public:
     
     // Iniciar decodificador
     decoder_.start();
+    if (prime_parser_on_start) {
+      decoder_.primeParserWithSpsPps();
+    }
     
     if (!decoder_.isActive()) {
       RCLCPP_ERROR(this->get_logger(), "Error al iniciar el decodificador");

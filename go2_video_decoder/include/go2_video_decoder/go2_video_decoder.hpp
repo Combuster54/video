@@ -76,6 +76,16 @@ public:
    */
   bool getVideoInfo(int& width, int& height, double& fps) const;
 
+  /**
+   * @brief Establece SPS/PPS iniciales (bytes crudos, idealmente con start code)
+   */
+  void setInitialSpsPps(const std::vector<uint8_t>& sps, const std::vector<uint8_t>& pps);
+
+  /**
+   * @brief Inyecta SPS/PPS cacheados al pipeline para preparar h264parse
+   */
+  void primeParserWithSpsPps();
+
 private:
   GstElement* pipeline_;
   GstElement* appsrc_;
