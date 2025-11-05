@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgo2_video_decoder.a  CMakeFiles/go2_video_decoder.dir/src/go2_video_decoder.cpp.o
+/usr/bin/ranlib libgo2_video_decoder.a

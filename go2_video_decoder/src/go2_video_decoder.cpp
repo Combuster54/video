@@ -50,20 +50,25 @@ bool Go2VideoDecoder::initialize(int width, int height) {
 }
 
 bool Go2VideoDecoder::buildPipeline() {
+  
   // Pipeline GStreamer para decodificar H.264 usando appsrc
   // appsrc -> h264parse -> avdec_h264 -> videoconvert -> appsink
 
-    //18 veces
-    std::string pipeline_str =
+
+  
+  std::string pipeline_str =
     "appsrc name=source is-live=true format=time ! "
-    //"queue ! "
-    "h264parse config-interval=-1 disable-passthrough=true ! "
     "queue ! "
+    "video/x-h264, width=1280, height=720,framerate=30/1  !"
+    //"video/x-h264,stream-format=byte-stream,alignment=nal ! "
+    //"h264parse config-interval=-1 disable-passthrough=true ! "
+    "h264parse config-interval=1 disable-passthrough=true ! "
+      //"queue ! "
     "avdec_h264 !"
-//    "queue ! "
-    "queue max-size-buffers=4 max-size-bytes=0 max-size-time=0 leaky=downstream silent=false !"       // aislar pos-proceso
-    "videoconvert ! "
-    "video/x-raw,format=BGR ! "
+    //"queue ! "
+    // "videoconvert ! "
+    // "videoscale ! "
+    //"video/x-raw, format=BGR , width=1280, height=720 ! " no
     "appsink name=sink emit-signals=true max-buffers=1 drop=false sync=false";
 
   std::cout << "\n=== CONSTRUYENDO PIPELINE GSTREAMER ===" << std::endl;

@@ -28,7 +28,7 @@ public:
    * @param height Alto esperado del video (opcional, se detecta automáticamente)
    * @return true si la inicialización fue exitosa
    */
-  bool initialize(int width = 1920, int height = 1080);
+  bool initialize(int width = 1280, int height = 720);
 
   /**
    * @brief Envía datos H.264 al pipeline para decodificar
@@ -121,4 +121,3 @@ private:
 } // namespace go2_video_decoder
 
 #endif // GO2_VIDEO_DECODER_HPP
-

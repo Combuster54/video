@@ -1,0 +1,4 @@
+[01m[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder.cpp:[m[K In static member function ‘[01m[Kstatic gboolean go2_video_decoder::Go2VideoDecoder::busCall(GstBus*, GstMessage*, gpointer)[m[K’:
+[01m[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder.cpp:404:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kbus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  404 | gboolean Go2VideoDecoder::busCall([01;35m[KGstBus* bus[m[K, GstMessage* msg, gpointer data) {
+      |                                   [01;35m[K~~~~~~~~^~~[m[K

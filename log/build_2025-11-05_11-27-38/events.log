@@ -1,0 +1,285 @@
+[0.000000] (-) TimerEvent: {}
+[0.000435] (go2_video_decoder) JobQueued: {'identifier': 'go2_video_decoder', 'dependencies': OrderedDict()}
+[0.000509] (go2_video_decoder) JobStarted: {'identifier': 'go2_video_decoder'}
+[0.014100] (go2_video_decoder) JobProgress: {'identifier': 'go2_video_decoder', 'progress': 'cmake'}
+[0.017211] (go2_video_decoder) Command: {'cmd': ['/usr/bin/cmake', '/home/workstation/ros2_ws/src/video/go2_video_decoder', '-DCMAKE_INSTALL_PREFIX=/home/workstation/ros2_ws/src/video/install/go2_video_decoder'], 'cwd': '/home/workstation/ros2_ws/src/video/build/go2_video_decoder', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'workstation'), ('GIT_ASKPASS', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/unitree_robotics/lib:/home/workstation/ros2_ws/install/go2_video_decoder/lib:/home/workstation/ros2_ws/install/unitree_go/lib:/home/workstation/ros2_ws/install/state_estimator/lib:/home/workstation/ros2_ws/install/state_estimator_msgs/lib:/home/workstation/ros2_ws/install/kiss_icp/lib:/home/workstation/ros2_ws/install/iit_commons/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib:/home/workstation/cyclonedds_ws/build/cyclonedds/lib:/home/workstation/cyclonedds_ws/build/cyclonedds/lib:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/workstation/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/workstation'), ('CYCLONEDDS_URI', 'file:///home/workstation/mujoco/go2_real.xml'), ('OLDPWD', '/home/workstation/ros2_ws'), ('TERM_PROGRAM_VERSION', '1.105.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-b15911a4-d7ad-40f4-bc16-bbf6291ccc72.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu-20.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/workstation/ros2_ws/install:/home/workstation/cyclonedds_ws/install:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'workstation'), ('NAME', 'DESKTOP-CPH3KB2'), ('WSL_INTEROP', '/run/WSL/1186_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib/x86_64-linux-gnu/pkgconfig:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib/pkgconfig:/home/workstation/cyclonedds_ws/install/cyclonedds/lib/x86_64-linux-gnu/pkgconfig:/home/workstation/cyclonedds_ws/install/cyclonedds/lib/pkgconfig'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/bin:/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/home/workstation/cyclonedds_ws/install/cyclonedds/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin:/mnt/c/Program Files/Python310/Scripts/:/mnt/c/Program Files/Python310/:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/LABID/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/LABID/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/LABID/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4378b74f43.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/workstation/ros2_ws/install/go2_video_decoder:/home/workstation/ros2_ws/install/unitree_go:/home/workstation/ros2_ws/install/state_estimator:/home/workstation/ros2_ws/install/state_estimator_msgs:/home/workstation/ros2_ws/install/kiss_icp:/home/workstation/ros2_ws/install/iit_commons:/home/workstation/ros2_ws/install/go2_topics:/home/workstation/ros2_ws/install/go2_description:/home/workstation/ros2_ws/install/go2_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/workstation/ros2_ws/src/video/build/go2_video_decoder'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/workstation/ros2_ws/install/unitree_go/lib/python3.8/site-packages:/home/workstation/ros2_ws/install/state_estimator_msgs/lib/python3.8/site-packages:/home/workstation/ros2_ws/install/go2_topics/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/workstation/ros2_ws/install/go2_video_decoder:/home/workstation/ros2_ws/install/unitree_go:/home/workstation/ros2_ws/install/state_estimator:/home/workstation/ros2_ws/install/state_estimator_msgs:/home/workstation/ros2_ws/install/kiss_icp:/home/workstation/ros2_ws/install/iit_commons:/home/workstation/ros2_ws/install/go2_description:/home/workstation/ros2_ws/install/go2_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/cyclonedds_ws/install/cyclonedds:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[0.098890] (-) TimerEvent: {}
+[0.199415] (-) TimerEvent: {}
+[0.297805] (go2_video_decoder) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.299532] (-) TimerEvent: {}
+[0.399917] (-) TimerEvent: {}
+[0.500339] (-) TimerEvent: {}
+[0.520912] (go2_video_decoder) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.596377] (go2_video_decoder) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.600469] (-) TimerEvent: {}
+[0.700853] (-) TimerEvent: {}
+[0.780933] (go2_video_decoder) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.784400] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.801060] (-) TimerEvent: {}
+[0.901444] (-) TimerEvent: {}
+[0.964234] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.980183] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.981527] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.986241] (go2_video_decoder) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[1.001616] (-) TimerEvent: {}
+[1.102003] (-) TimerEvent: {}
+[1.156696] (go2_video_decoder) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[1.158045] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.202165] (-) TimerEvent: {}
+[1.302509] (-) TimerEvent: {}
+[1.332390] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.348039] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.348889] (go2_video_decoder) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.355083] (go2_video_decoder) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.386773] (go2_video_decoder) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[1.387009] (go2_video_decoder) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.402661] (-) TimerEvent: {}
+[1.503017] (-) TimerEvent: {}
+[1.603392] (-) TimerEvent: {}
+[1.632647] (go2_video_decoder) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[1.703544] (-) TimerEvent: {}
+[1.796104] (go2_video_decoder) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.803675] (-) TimerEvent: {}
+[1.809515] (go2_video_decoder) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.903800] (-) TimerEvent: {}
+[2.004176] (-) TimerEvent: {}
+[2.104552] (-) TimerEvent: {}
+[2.204936] (-) TimerEvent: {}
+[2.305273] (-) TimerEvent: {}
+[2.405680] (-) TimerEvent: {}
+[2.506084] (-) TimerEvent: {}
+[2.606445] (-) TimerEvent: {}
+[2.609497] (go2_video_decoder) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[2.706568] (-) TimerEvent: {}
+[2.806960] (-) TimerEvent: {}
+[2.907319] (-) TimerEvent: {}
+[3.007695] (-) TimerEvent: {}
+[3.108042] (-) TimerEvent: {}
+[3.208402] (-) TimerEvent: {}
+[3.308747] (-) TimerEvent: {}
+[3.340368] (go2_video_decoder) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[3.408866] (-) TimerEvent: {}
+[3.509205] (-) TimerEvent: {}
+[3.609581] (-) TimerEvent: {}
+[3.709926] (-) TimerEvent: {}
+[3.810298] (-) TimerEvent: {}
+[3.910667] (-) TimerEvent: {}
+[4.011015] (-) TimerEvent: {}
+[4.111404] (-) TimerEvent: {}
+[4.211851] (-) TimerEvent: {}
+[4.312200] (-) TimerEvent: {}
+[4.412556] (-) TimerEvent: {}
+[4.513014] (-) TimerEvent: {}
+[4.613561] (-) TimerEvent: {}
+[4.687646] (go2_video_decoder) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.713834] (-) TimerEvent: {}
+[4.755838] (go2_video_decoder) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[4.757838] (go2_video_decoder) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_cyclonedds_cpp' as default\n"}
+[4.759754] (go2_video_decoder) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[4.814117] (-) TimerEvent: {}
+[4.914579] (-) TimerEvent: {}
+[4.923421] (go2_video_decoder) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[4.923800] (go2_video_decoder) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.014723] (-) TimerEvent: {}
+[5.104114] (go2_video_decoder) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[5.104456] (go2_video_decoder) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[5.114896] (-) TimerEvent: {}
+[5.215411] (-) TimerEvent: {}
+[5.258488] (go2_video_decoder) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[5.258779] (go2_video_decoder) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[5.315545] (-) TimerEvent: {}
+[5.415973] (-) TimerEvent: {}
+[5.420648] (go2_video_decoder) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[5.421825] (go2_video_decoder) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[5.516139] (-) TimerEvent: {}
+[5.594931] (go2_video_decoder) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[5.616272] (-) TimerEvent: {}
+[5.716651] (-) TimerEvent: {}
+[5.718594] (go2_video_decoder) StdoutLine: {'line': b'-- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)\n'}
+[5.753072] (go2_video_decoder) StdoutLine: {'line': b'-- Found OpenCV: /usr (found version "4.2.0") \n'}
+[5.753773] (go2_video_decoder) StdoutLine: {'line': b'-- Found unitree_go: 0.0.1 (/home/workstation/ros2_ws/install/unitree_go/share/unitree_go/cmake)\n'}
+[5.766175] (go2_video_decoder) StdoutLine: {'line': b'-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") \n'}
+[5.767516] (go2_video_decoder) StdoutLine: {'line': b"-- Checking for module 'gstreamer-1.0'\n"}
+[5.797756] (go2_video_decoder) StdoutLine: {'line': b'--   Found gstreamer-1.0, version 1.16.3\n'}
+[5.816814] (-) TimerEvent: {}
+[5.917195] (-) TimerEvent: {}
+[5.940422] (go2_video_decoder) StdoutLine: {'line': b"-- Checking for module 'gstreamer-app-1.0'\n"}
+[5.969630] (go2_video_decoder) StdoutLine: {'line': b'--   Found gstreamer-app-1.0, version 1.16.3\n'}
+[6.017361] (-) TimerEvent: {}
+[6.117713] (-) TimerEvent: {}
+[6.218119] (-) TimerEvent: {}
+[6.251664] (go2_video_decoder) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.290873] (go2_video_decoder) StdoutLine: {'line': b'-- Generating done\n'}
+[6.309835] (go2_video_decoder) StdoutLine: {'line': b'-- Build files have been written to: /home/workstation/ros2_ws/src/video/build/go2_video_decoder\n'}
+[6.318292] (-) TimerEvent: {}
+[6.321683] (go2_video_decoder) CommandEnded: {'returncode': 0}
+[6.322515] (go2_video_decoder) JobProgress: {'identifier': 'go2_video_decoder', 'progress': 'build'}
+[6.325216] (go2_video_decoder) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/workstation/ros2_ws/src/video/build/go2_video_decoder', '--', '-j12', '-l12'], 'cwd': '/home/workstation/ros2_ws/src/video/build/go2_video_decoder', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'workstation'), ('GIT_ASKPASS', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/unitree_robotics/lib:/home/workstation/ros2_ws/install/go2_video_decoder/lib:/home/workstation/ros2_ws/install/unitree_go/lib:/home/workstation/ros2_ws/install/state_estimator/lib:/home/workstation/ros2_ws/install/state_estimator_msgs/lib:/home/workstation/ros2_ws/install/kiss_icp/lib:/home/workstation/ros2_ws/install/iit_commons/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib:/home/workstation/cyclonedds_ws/build/cyclonedds/lib:/home/workstation/cyclonedds_ws/build/cyclonedds/lib:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/workstation/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/workstation'), ('CYCLONEDDS_URI', 'file:///home/workstation/mujoco/go2_real.xml'), ('OLDPWD', '/home/workstation/ros2_ws'), ('TERM_PROGRAM_VERSION', '1.105.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-b15911a4-d7ad-40f4-bc16-bbf6291ccc72.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu-20.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/workstation/ros2_ws/install:/home/workstation/cyclonedds_ws/install:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'workstation'), ('NAME', 'DESKTOP-CPH3KB2'), ('WSL_INTEROP', '/run/WSL/1186_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib/x86_64-linux-gnu/pkgconfig:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib/pkgconfig:/home/workstation/cyclonedds_ws/install/cyclonedds/lib/x86_64-linux-gnu/pkgconfig:/home/workstation/cyclonedds_ws/install/cyclonedds/lib/pkgconfig'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/bin:/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/home/workstation/cyclonedds_ws/install/cyclonedds/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin:/mnt/c/Program Files/Python310/Scripts/:/mnt/c/Program Files/Python310/:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/LABID/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/LABID/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/LABID/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4378b74f43.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/workstation/ros2_ws/install/go2_video_decoder:/home/workstation/ros2_ws/install/unitree_go:/home/workstation/ros2_ws/install/state_estimator:/home/workstation/ros2_ws/install/state_estimator_msgs:/home/workstation/ros2_ws/install/kiss_icp:/home/workstation/ros2_ws/install/iit_commons:/home/workstation/ros2_ws/install/go2_topics:/home/workstation/ros2_ws/install/go2_description:/home/workstation/ros2_ws/install/go2_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/workstation/ros2_ws/src/video/build/go2_video_decoder'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/workstation/ros2_ws/install/unitree_go/lib/python3.8/site-packages:/home/workstation/ros2_ws/install/state_estimator_msgs/lib/python3.8/site-packages:/home/workstation/ros2_ws/install/go2_topics/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/workstation/ros2_ws/install/go2_video_decoder:/home/workstation/ros2_ws/install/unitree_go:/home/workstation/ros2_ws/install/state_estimator:/home/workstation/ros2_ws/install/state_estimator_msgs:/home/workstation/ros2_ws/install/kiss_icp:/home/workstation/ros2_ws/install/iit_commons:/home/workstation/ros2_ws/install/go2_description:/home/workstation/ros2_ws/install/go2_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/cyclonedds_ws/install/cyclonedds:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[6.388953] (go2_video_decoder) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target go2_video_decoder\x1b[0m\n'}
+[6.418474] (-) TimerEvent: {}
+[6.444979] (go2_video_decoder) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/go2_video_decoder.dir/src/go2_video_decoder.cpp.o\x1b[0m\n'}
+[6.518637] (-) TimerEvent: {}
+[6.619035] (-) TimerEvent: {}
+[6.719414] (-) TimerEvent: {}
+[6.819831] (-) TimerEvent: {}
+[6.920259] (-) TimerEvent: {}
+[7.020644] (-) TimerEvent: {}
+[7.121106] (-) TimerEvent: {}
+[7.221453] (-) TimerEvent: {}
+[7.321917] (-) TimerEvent: {}
+[7.422349] (-) TimerEvent: {}
+[7.522741] (-) TimerEvent: {}
+[7.623140] (-) TimerEvent: {}
+[7.723549] (-) TimerEvent: {}
+[7.823938] (-) TimerEvent: {}
+[7.924325] (-) TimerEvent: {}
+[8.024715] (-) TimerEvent: {}
+[8.125108] (-) TimerEvent: {}
+[8.161960] (go2_video_decoder) StderrLine: {'line': b'\x1b[01m\x1b[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder.cpp:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic gboolean go2_video_decoder::Go2VideoDecoder::busCall(GstBus*, GstMessage*, gpointer)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.162213] (go2_video_decoder) StderrLine: {'line': b'\x1b[01m\x1b[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder.cpp:403:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kbus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.162285] (go2_video_decoder) StderrLine: {'line': b'  403 | gboolean Go2VideoDecoder::busCall(\x1b[01;35m\x1b[KGstBus* bus\x1b[m\x1b[K, GstMessage* msg, gpointer data) {\n'}
+[8.162369] (go2_video_decoder) StderrLine: {'line': b'      |                                   \x1b[01;35m\x1b[K~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[8.225274] (-) TimerEvent: {}
+[8.325661] (-) TimerEvent: {}
+[8.426050] (-) TimerEvent: {}
+[8.526480] (-) TimerEvent: {}
+[8.626863] (-) TimerEvent: {}
+[8.727258] (-) TimerEvent: {}
+[8.827666] (-) TimerEvent: {}
+[8.928085] (-) TimerEvent: {}
+[9.022438] (go2_video_decoder) StdoutLine: {'line': b'[ 50%] \x1b[32m\x1b[1mLinking CXX static library libgo2_video_decoder.a\x1b[0m\n'}
+[9.028261] (-) TimerEvent: {}
+[9.082483] (go2_video_decoder) StdoutLine: {'line': b'[ 50%] Built target go2_video_decoder\n'}
+[9.101051] (go2_video_decoder) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target go2_video_decoder_node\x1b[0m\n'}
+[9.128408] (-) TimerEvent: {}
+[9.192510] (go2_video_decoder) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/go2_video_decoder_node.dir/src/go2_video_decoder_node.cpp.o\x1b[0m\n'}
+[9.228576] (-) TimerEvent: {}
+[9.328993] (-) TimerEvent: {}
+[9.429471] (-) TimerEvent: {}
+[9.530402] (-) TimerEvent: {}
+[9.630819] (-) TimerEvent: {}
+[9.731298] (-) TimerEvent: {}
+[9.832018] (-) TimerEvent: {}
+[9.932375] (-) TimerEvent: {}
+[10.032816] (-) TimerEvent: {}
+[10.133204] (-) TimerEvent: {}
+[10.233582] (-) TimerEvent: {}
+[10.333970] (-) TimerEvent: {}
+[10.434355] (-) TimerEvent: {}
+[10.534756] (-) TimerEvent: {}
+[10.635098] (-) TimerEvent: {}
+[10.735514] (-) TimerEvent: {}
+[10.835925] (-) TimerEvent: {}
+[10.936310] (-) TimerEvent: {}
+[11.036701] (-) TimerEvent: {}
+[11.137106] (-) TimerEvent: {}
+[11.237557] (-) TimerEvent: {}
+[11.337998] (-) TimerEvent: {}
+[11.438393] (-) TimerEvent: {}
+[11.538824] (-) TimerEvent: {}
+[11.639233] (-) TimerEvent: {}
+[11.739699] (-) TimerEvent: {}
+[11.840083] (-) TimerEvent: {}
+[11.940440] (-) TimerEvent: {}
+[12.021520] (go2_video_decoder) StderrLine: {'line': b'\x1b[01m\x1b[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder_node.cpp:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic std::string Go2VideoDecoderNode::summarizeH264NALs(const uint8_t*, size_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.021734] (go2_video_decoder) StderrLine: {'line': b'\x1b[01m\x1b[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder_node.cpp:127:10:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[KnalName\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[12.021803] (go2_video_decoder) StderrLine: {'line': b'  127 |     auto \x1b[01;35m\x1b[KnalName\x1b[m\x1b[K = [](int t) {\n'}
+[12.021863] (go2_video_decoder) StderrLine: {'line': b'      |          \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[12.027012] (go2_video_decoder) StderrLine: {'line': b'\x1b[01m\x1b[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Go2VideoDecoderNode::videoDataCallback(unitree_go::msg::Go2FrontVideoData_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.027246] (go2_video_decoder) StderrLine: {'line': b'\x1b[01m\x1b[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder_node.cpp:190:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Klog_count\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[12.027326] (go2_video_decoder) StderrLine: {'line': b'  190 |     static int \x1b[01;35m\x1b[Klog_count\x1b[m\x1b[K = 0;\n'}
+[12.027386] (go2_video_decoder) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[12.040608] (-) TimerEvent: {}
+[12.140999] (-) TimerEvent: {}
+[12.241383] (-) TimerEvent: {}
+[12.341774] (-) TimerEvent: {}
+[12.442161] (-) TimerEvent: {}
+[12.542550] (-) TimerEvent: {}
+[12.643384] (-) TimerEvent: {}
+[12.743985] (-) TimerEvent: {}
+[12.844417] (-) TimerEvent: {}
+[12.944787] (-) TimerEvent: {}
+[13.045232] (-) TimerEvent: {}
+[13.145902] (-) TimerEvent: {}
+[13.246370] (-) TimerEvent: {}
+[13.346837] (-) TimerEvent: {}
+[13.447345] (-) TimerEvent: {}
+[13.547882] (-) TimerEvent: {}
+[13.648362] (-) TimerEvent: {}
+[13.748793] (-) TimerEvent: {}
+[13.849229] (-) TimerEvent: {}
+[13.949661] (-) TimerEvent: {}
+[14.050075] (-) TimerEvent: {}
+[14.150575] (-) TimerEvent: {}
+[14.250993] (-) TimerEvent: {}
+[14.351447] (-) TimerEvent: {}
+[14.451871] (-) TimerEvent: {}
+[14.552254] (-) TimerEvent: {}
+[14.652706] (-) TimerEvent: {}
+[14.753141] (-) TimerEvent: {}
+[14.853570] (-) TimerEvent: {}
+[14.953955] (-) TimerEvent: {}
+[15.054397] (-) TimerEvent: {}
+[15.154781] (-) TimerEvent: {}
+[15.255160] (-) TimerEvent: {}
+[15.355545] (-) TimerEvent: {}
+[15.455923] (-) TimerEvent: {}
+[15.556264] (-) TimerEvent: {}
+[15.656645] (-) TimerEvent: {}
+[15.757044] (-) TimerEvent: {}
+[15.857421] (-) TimerEvent: {}
+[15.957798] (-) TimerEvent: {}
+[16.058182] (-) TimerEvent: {}
+[16.158579] (-) TimerEvent: {}
+[16.258987] (-) TimerEvent: {}
+[16.359384] (-) TimerEvent: {}
+[16.459929] (-) TimerEvent: {}
+[16.560557] (-) TimerEvent: {}
+[16.660925] (-) TimerEvent: {}
+[16.761348] (-) TimerEvent: {}
+[16.861857] (-) TimerEvent: {}
+[16.962433] (-) TimerEvent: {}
+[17.025341] (go2_video_decoder) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable go2_video_decoder_node\x1b[0m\n'}
+[17.062678] (-) TimerEvent: {}
+[17.163203] (-) TimerEvent: {}
+[17.263711] (-) TimerEvent: {}
+[17.364185] (-) TimerEvent: {}
+[17.464676] (-) TimerEvent: {}
+[17.565052] (-) TimerEvent: {}
+[17.665457] (-) TimerEvent: {}
+[17.765943] (-) TimerEvent: {}
+[17.823202] (go2_video_decoder) StdoutLine: {'line': b'[100%] Built target go2_video_decoder_node\n'}
+[17.841927] (go2_video_decoder) CommandEnded: {'returncode': 0}
+[17.844614] (go2_video_decoder) JobProgress: {'identifier': 'go2_video_decoder', 'progress': 'install'}
+[17.860245] (go2_video_decoder) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/workstation/ros2_ws/src/video/build/go2_video_decoder'], 'cwd': '/home/workstation/ros2_ws/src/video/build/go2_video_decoder', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'workstation'), ('GIT_ASKPASS', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/unitree_robotics/lib:/home/workstation/ros2_ws/install/go2_video_decoder/lib:/home/workstation/ros2_ws/install/unitree_go/lib:/home/workstation/ros2_ws/install/state_estimator/lib:/home/workstation/ros2_ws/install/state_estimator_msgs/lib:/home/workstation/ros2_ws/install/kiss_icp/lib:/home/workstation/ros2_ws/install/iit_commons/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib:/home/workstation/cyclonedds_ws/build/cyclonedds/lib:/home/workstation/cyclonedds_ws/build/cyclonedds/lib:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp/lib:/home/workstation/cyclonedds_ws/install/cyclonedds/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'update-motd'), ('HOME', '/home/workstation'), ('CYCLONEDDS_URI', 'file:///home/workstation/mujoco/go2_real.xml'), ('OLDPWD', '/home/workstation/ros2_ws'), ('TERM_PROGRAM_VERSION', '1.105.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-b15911a4-d7ad-40f4-bc16-bbf6291ccc72.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/node'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu-20.04'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/workstation/ros2_ws/install:/home/workstation/cyclonedds_ws/install:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'workstation'), ('NAME', 'DESKTOP-CPH3KB2'), ('WSL_INTEROP', '/run/WSL/1186_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib/x86_64-linux-gnu/pkgconfig:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/lib/pkgconfig:/home/workstation/cyclonedds_ws/install/cyclonedds/lib/x86_64-linux-gnu/pkgconfig:/home/workstation/cyclonedds_ws/install/cyclonedds/lib/pkgconfig'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds/bin:/home/workstation/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/home/workstation/cyclonedds_ws/install/cyclonedds/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Common Files/Siemens/Automation/Simatic OAM/bin:/mnt/c/Program Files/Python310/Scripts/:/mnt/c/Program Files/Python310/:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/LABID/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/LABID/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/LABID/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4378b74f43.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/workstation/ros2_ws/install/go2_video_decoder:/home/workstation/ros2_ws/install/unitree_go:/home/workstation/ros2_ws/install/state_estimator:/home/workstation/ros2_ws/install/state_estimator_msgs:/home/workstation/ros2_ws/install/kiss_icp:/home/workstation/ros2_ws/install/iit_commons:/home/workstation/ros2_ws/install/go2_topics:/home/workstation/ros2_ws/install/go2_description:/home/workstation/ros2_ws/install/go2_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/workstation/ros2_ws/src/video/build/go2_video_decoder'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/workstation/ros2_ws/install/unitree_go/lib/python3.8/site-packages:/home/workstation/ros2_ws/install/state_estimator_msgs/lib/python3.8/site-packages:/home/workstation/ros2_ws/install/go2_topics/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.8/site-packages:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('CMAKE_PREFIX_PATH', '/home/workstation/ros2_ws/install/go2_video_decoder:/home/workstation/ros2_ws/install/unitree_go:/home/workstation/ros2_ws/install/state_estimator:/home/workstation/ros2_ws/install/state_estimator_msgs:/home/workstation/ros2_ws/install/kiss_icp:/home/workstation/ros2_ws/install/iit_commons:/home/workstation/ros2_ws/install/go2_description:/home/workstation/ros2_ws/install/go2_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_hg:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_go:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/unitree_api:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/mujoco/unitree_ros2/cyclonedds_ws/install/cyclonedds:/home/workstation/cyclonedds_ws/install/rmw_cyclonedds_cpp:/home/workstation/cyclonedds_ws/install/cyclonedds:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up')]), 'shell': False}
+[17.866143] (-) TimerEvent: {}
+[17.873920] (go2_video_decoder) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[17.874622] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/lib/libgo2_video_decoder.a\n'}
+[17.876083] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/lib/go2_video_decoder/go2_video_decoder_node\n'}
+[17.879548] (go2_video_decoder) StdoutLine: {'line': b'-- Set runtime path of "/home/workstation/ros2_ws/src/video/install/go2_video_decoder/lib/go2_video_decoder/go2_video_decoder_node" to ""\n'}
+[17.880040] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/include\n'}
+[17.880330] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/include/go2_video_decoder\n'}
+[17.880618] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/include/go2_video_decoder/go2_video_decoder.hpp\n'}
+[17.881708] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/library_path.sh\n'}
+[17.881923] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/library_path.dsv\n'}
+[17.882875] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/ament_index/resource_index/package_run_dependencies/go2_video_decoder\n'}
+[17.883376] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/ament_index/resource_index/parent_prefix_path/go2_video_decoder\n'}
+[17.883667] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/ament_prefix_path.sh\n'}
+[17.883934] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/ament_prefix_path.dsv\n'}
+[17.884031] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/path.sh\n'}
+[17.884272] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/path.dsv\n'}
+[17.884480] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.bash\n'}
+[17.884681] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.sh\n'}
+[17.884957] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.zsh\n'}
+[17.885054] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.dsv\n'}
+[17.885284] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/package.dsv\n'}
+[17.885777] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/ament_index/resource_index/packages/go2_video_decoder\n'}
+[17.886240] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[17.886450] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[17.886661] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[17.886883] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/go2_video_decoderConfig.cmake\n'}
+[17.887138] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/go2_video_decoderConfig-version.cmake\n'}
+[17.887234] (go2_video_decoder) StdoutLine: {'line': b'-- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/package.xml\n'}
+[17.890343] (go2_video_decoder) CommandEnded: {'returncode': 0}
+[17.913900] (go2_video_decoder) JobEnded: {'identifier': 'go2_video_decoder', 'rc': 0}
+[17.914451] (-) EventReactorShutdown: {}

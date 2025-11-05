@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "go2_video_decoder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_video_decoder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_video_decoder-346a1217905bc0bb7196.json",
+					"name" : "go2_video_decoder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_video_decoder_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_video_decoder_node-5a1059ec9609fbecec19.json",
+					"name" : "go2_video_decoder_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_video_decoder_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_video_decoder_uninstall-717b5b01af7b91f51cac.json",
+					"name" : "go2_video_decoder_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-5ec98c09528e99556089.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/workstation/ros2_ws/src/video/build/go2_video_decoder",
+		"source" : "/home/workstation/ros2_ws/src/video/go2_video_decoder"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

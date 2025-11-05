@@ -1,0 +1,41 @@
+[0.024s] Invoking command in '/home/workstation/ros2_ws/src/video/build/go2_video_decoder': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy /usr/bin/cmake --build /home/workstation/ros2_ws/src/video/build/go2_video_decoder -- -j12 -l12
+[0.088s] [35m[1mScanning dependencies of target go2_video_decoder[0m
+[0.123s] [ 25%] [32mBuilding CXX object CMakeFiles/go2_video_decoder.dir/src/go2_video_decoder.cpp.o[0m
+[1.800s] [01m[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder.cpp:[m[K In static member function ‘[01m[Kstatic gboolean go2_video_decoder::Go2VideoDecoder::busCall(GstBus*, GstMessage*, gpointer)[m[K’:
+[1.800s] [01m[K/home/workstation/ros2_ws/src/video/go2_video_decoder/src/go2_video_decoder.cpp:407:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kbus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[1.800s]   407 | gboolean Go2VideoDecoder::busCall([01;35m[KGstBus* bus[m[K, GstMessage* msg, gpointer data) {
+[1.800s]       |                                   [01;35m[K~~~~~~~~^~~[m[K
+[2.654s] [ 50%] [32m[1mLinking CXX static library libgo2_video_decoder.a[0m
+[2.717s] [ 50%] Built target go2_video_decoder
+[2.775s] [ 75%] [32m[1mLinking CXX executable go2_video_decoder_node[0m
+[3.529s] [100%] Built target go2_video_decoder_node
+[3.547s] Invoked command in '/home/workstation/ros2_ws/src/video/build/go2_video_decoder' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy /usr/bin/cmake --build /home/workstation/ros2_ws/src/video/build/go2_video_decoder -- -j12 -l12
+[3.567s] Invoking command in '/home/workstation/ros2_ws/src/video/build/go2_video_decoder': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy /usr/bin/cmake --install /home/workstation/ros2_ws/src/video/build/go2_video_decoder
+[3.579s] -- Install configuration: ""
+[3.580s] -- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/lib/libgo2_video_decoder.a
+[3.580s] -- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/lib/go2_video_decoder/go2_video_decoder_node
+[3.584s] -- Set runtime path of "/home/workstation/ros2_ws/src/video/install/go2_video_decoder/lib/go2_video_decoder/go2_video_decoder_node" to ""
+[3.585s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/include
+[3.585s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/include/go2_video_decoder
+[3.585s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/include/go2_video_decoder/go2_video_decoder.hpp
+[3.585s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/library_path.sh
+[3.585s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/library_path.dsv
+[3.586s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/ament_index/resource_index/package_run_dependencies/go2_video_decoder
+[3.586s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/ament_index/resource_index/parent_prefix_path/go2_video_decoder
+[3.586s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/ament_prefix_path.sh
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/ament_prefix_path.dsv
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/path.sh
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/environment/path.dsv
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.bash
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.sh
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.zsh
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/local_setup.dsv
+[3.587s] -- Installing: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/package.dsv
+[3.587s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/ament_index/resource_index/packages/go2_video_decoder
+[3.588s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.588s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/ament_cmake_export_libraries-extras.cmake
+[3.588s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.588s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/go2_video_decoderConfig.cmake
+[3.588s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/cmake/go2_video_decoderConfig-version.cmake
+[3.588s] -- Up-to-date: /home/workstation/ros2_ws/src/video/install/go2_video_decoder/share/go2_video_decoder/package.xml
+[3.590s] Invoked command in '/home/workstation/ros2_ws/src/video/build/go2_video_decoder' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/workstation/ros2_ws/install/go2_topics:/opt/ros/foxy /usr/bin/cmake --install /home/workstation/ros2_ws/src/video/build/go2_video_decoder
